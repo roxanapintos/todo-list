@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+
+import { createContainer } from 'meteor/react-meteor-data';
+import { Tasks } from '../api/task.js';
  
 import Task from './Task.jsx';
  

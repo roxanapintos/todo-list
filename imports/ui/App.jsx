@@ -6,6 +6,32 @@ import { Tasks } from '../api/task.js';
 import Task from './Task.jsx';
  
 // App component - represents the whole app
+
+class App extends Component {
+  renderTasks() {
+    return this.props.tasks.map((task) => (
+      <Task key={task._id} task={task} />
+    ));
+  }
+//...some lines skipped...
+    //);
+  //}
+}
+ 
+App.propTypes = {
+  tasks: PropTypes.array.isRequired,
+};
+
+
+ 
+export default createContainer(() => {
+  return {
+    tasks: Tasks.find({}).fetch(),
+  };
+}, App);
+
+/*
+
 export default class App extends Component {
   getTasks() {
     return [
@@ -20,6 +46,7 @@ export default class App extends Component {
       <Task key={task._id} task={task} />
     ));
   }
+
  
   render() {
     return (
@@ -34,4 +61,6 @@ export default class App extends Component {
       </div>
     );
   }
+  
 }
+*/

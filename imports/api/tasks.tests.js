@@ -33,9 +33,19 @@ if ( Meteor.isServer) {
 				// Run the method with 'this' set to the fake invocation
 				deleteTask.apply(invocation, [taskId]);
 
-				// Verify that the method does what the expectec
+				// Verify that the method does what the expected
 				assert.equal(Tasks.find().count(), 0);
 			});
+
+			/*it('can insert task', ()=> {
+				const insertTask = Meteor.server.method_handlers['tasks.insert'];
+
+				const invocation = { userId };
+
+				insertTask.apply(invocation, [taskId]);
+
+				assert.equal(Tasks.find().count(), 0);
+			});*/
 		});
 	});
 }
